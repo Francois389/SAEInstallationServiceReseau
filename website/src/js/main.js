@@ -12,43 +12,42 @@ if (buttonBack !== null) {
     buttonBack.addEventListener('click', () => {
         window.location.href = '../racine.html';
     });
-};
+}
 
 if (buttonRedirectLogin !== null || buttonRedirectSignUp !== null) {
     buttonRedirectLogin.addEventListener('click', () => {
     window.location.href = 'pages/connexion.html';
     });
-};
+}
 
 if (buttonRedirectSignUp !== null || buttonRedirectLogin !== null) {
     buttonRedirectSignUp.addEventListener('click', () => {
     window.location.href = 'pages/inscription.html';
     });
-};
+}
 
 if (buttonSend !== null) {
     buttonSend.addEventListener('click', validateFormSignUp);
-};
+}
 
 if (inputPasswordSignUp !== null) {
     if (inputPasswordSignUp.value !== '' && inputMailSignUp.value !== '' && inputNameSignUp.value !== '' && inputFistNameSignUp.value !== '') {
         validateFormSignUp();
     } 
-};
+}
 
-/* test de la validitée du formulaire d'incription afin de laisser passer ou non l'utilisateur en autorisant le clic sur le bouton d'envoi du formulaire */
 function validateFormSignUp() {
-    var mail = inputMailSignUp.value;
-    var name = inputNameSignUp.value;
-    var firstName = inputFistNameSignUp.value;
-    var password = inoutPasswordSignUp.value;
-    var mailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    var nameRegex = /^[a-zA-Z]+$/;
+    const mail = inputMailSignUp.value,
+        name = inputNameSignUp.value,
+        firstName = inputFistNameSignUp.value,
+        password = inputPasswordSignUp.value,
+        mailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+        nameRegex = /^[a-zA-Z]+$/;
 
     if (mailRegex.test(mail) && nameRegex.test(name) && nameRegex.test(firstName) && password.length >= 8) {
         buttonSend.style.backgroundColor = '#2ECC71';
         return true;
-    };
+    }
     if (mailRegex.test(mail) === false) {
         inputMailSignUp.style.borderColor = 'red';
     }
@@ -61,4 +60,4 @@ function validateFormSignUp() {
     if (password.length < 8) {
         inputPasswordSignUp.style.borderColor = 'red';
     }
-};
+}
