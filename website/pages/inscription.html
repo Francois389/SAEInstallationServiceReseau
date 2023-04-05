@@ -5,38 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../src/css/style.css">
-    <script src="src/js/main.js" defer></script>
+    <script src="../src/js/main.js" defer></script>
     <title>inscription</title>
 </head>
     <body>
         <div class="header">
-            <h1>inscription</h1>
+            <h1>Inscription</h1>
+            <button id="back" class="buttonBack">Retour a  l'accueil</button>
         </div>
         <div class="mainBlock">
-            <form action="connecte.html" method="POST">
+            <form action="connecte.html" method="POST" name="formSignUp">
                 <div class="title">Inscrivez vous !</div>
 
                     <div class="singleInput">
                         <label for="emailInput">Entrez votre email:</label>
-                        <input type="email" name="emailInput" id="email">
-                    </div>
-
-                    <div class="singleInput">
-                        <label for="emailInput">Entrez votre nom :</label>
-                        <input type="text" name="nameInput" id="name">
+                        <input type="email" name="emailInput" id="email" placeholder="exemple@mail.com" id="mailSignUp">
                     </div>
 
                     <div class="singleInput">
                         <label for="emailInput">Entrez votre prénom :</label>
-                        <input type="text" name="surnameInput" id="surname">
+                        <input type="text" name="surnameInput" id="surname" placeholder="John" id="nameSignUp">
+                    </div>
+
+                    <div class="singleInput">
+                        <label for="emailInput">Entrez votre nom :</label>
+                        <input type="text" name="nameInput" id="name" placeholder="Doe" id="firstNameSignUp">
                     </div>
 
                     <div class="singleInput">
                         <label for="passwordInput">Entrez votre mot de passe:</label>
-                        <input type="password" name="passwordInput" id="password">
+                        <input type="password" name="passwordInput" id="password" placeholder="mot de passe" id="passwordSignUp">
                     </div>
-                </div>
-                <input type="submit" value="S'inscrire">
+                <input class="valider" type="submit" value="S'inscrire" id="send">
             </form>
         </div>
         <footer>
