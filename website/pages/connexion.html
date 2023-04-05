@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../src/css/style.css">
+    <script src="src/js/main.js" defer></script>
     <title>connexion</title>
 </head>
     <body>
@@ -15,13 +16,17 @@
             <!-- connection fictive -->
             <form action="connecte.html" method="POST">
                 <div class="title">Connectez vous !</div>
-                
-                <div class="inputTitle">Email: </div>
-                <input type="email" name="emailInput" id="email" placeholder="test@mail.com">
 
-                <div class="inputTitle">Mot de passe: </div>
-                <input type="password" name="passwordInput" id="password">
-                <br>
+                <div class="singleInput">
+                    <label for="emailInput">Entrez votre email:</label>
+                    <input type="email" name="emailInput" id="email">
+                </div>
+
+                <div class="singleInput">
+                    <label for="passwordInput">Entrez votre mot de passe:</label>
+                    <input type="password" name="passwordInput" id="password">
+                </div>
+
                 <input class="valider" type="submit" value="Se connecter">
             </form>
         </div>
