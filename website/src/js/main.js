@@ -7,6 +7,9 @@ const inputNameSignUp = document.getElementById('nameSignUp');
 const inputFistNameSignUp = document.getElementById('firstNameSignUp');
 const inputPasswordSignUp = document.getElementById('passwordSignUp');
 
+if (buttonSend !== null) {
+    buttonSend.disabled=true;
+}
 
 if (buttonBack !== null) {
     buttonBack.addEventListener('click', () => {
@@ -27,16 +30,11 @@ if (buttonRedirectSignUp !== null || buttonRedirectLogin !== null) {
 }
 
 if (buttonSend !== null) {
-    buttonSend.addEventListener('click', validateFormSignUp);
-}
-
-if (inputPasswordSignUp !== null) {
-    if (inputPasswordSignUp.value !== '' && inputMailSignUp.value !== '' && inputNameSignUp.value !== '' && inputFistNameSignUp.value !== '') {
-        validateFormSignUp();
-    } 
+    buttonSend.addEventListener('mouseup', validateFormSignUp);
 }
 
 function validateFormSignUp() {
+    console.log('test');
     const mail = inputMailSignUp.value,
         name = inputNameSignUp.value,
         firstName = inputFistNameSignUp.value,
@@ -46,7 +44,7 @@ function validateFormSignUp() {
 
     if (mailRegex.test(mail) && nameRegex.test(name) && nameRegex.test(firstName) && password.length >= 8) {
         buttonSend.style.backgroundColor = '#2ECC71';
-        return true;
+        buttonSend.disabled=false;
     }
     if (mailRegex.test(mail) === false) {
         inputMailSignUp.style.borderColor = 'red';
@@ -54,7 +52,7 @@ function validateFormSignUp() {
     if (nameRegex.test(name) === false) {
         inputNameSignUp.style.borderColor = 'red';
     }
-    if (nameRegex.test(firstName) === false) {
+    if (nameRegex.test(name) === false) {
         inputFistNameSignUp.style.borderColor = 'red';
     }
     if (password.length < 8) {
