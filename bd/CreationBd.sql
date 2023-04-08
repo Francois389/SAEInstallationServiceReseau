@@ -2,7 +2,7 @@ CREATE TABLE tpersonne(
     id INT PRIMARY KEY NOT NULL,
     nom VARCHAR(40),
     prenom VARCHAR(30),
-    age INT() CHECK (age > 0)
+    age INT CHECK (age > 0)
 );
 
 INSERT INTO tpersonne
