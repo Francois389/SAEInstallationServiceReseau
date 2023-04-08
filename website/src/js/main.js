@@ -51,6 +51,14 @@ function validateFormSignUp() {
     if (mailRegex.test(mail) && nameRegex.test(name) && nameRegex.test(firstName)) {
         buttonSend.style.backgroundColor = '#4158D0';
         buttonSend.disabled=false;
+        inputMailSignUp.style.borderColor = 'black';
+        inputMailSignUp.style.borderWidth = '1px';
+        inputNameSignUp.style.borderColor = 'black';
+        inputNameSignUp.style.borderWidth = '1px';
+        inputFirstnameSignUp.style.borderColor = 'black';
+        inputFirstnameSignUp.style.borderWidth = '1px';
+        inputPasswordSignUp.style.borderColor = 'black';
+        inputPasswordSignUp.style.borderWidth = '1px';
     }
     if (!mailRegex.test(mail)) {
         console.log('mailRegex.test(mail) : ',inputMailSignUp.value, mailRegex.test(mail));
@@ -84,6 +92,10 @@ function validateFormLogin() {
     if (mailRegex.test(mail)) {
         buttonSend.style.backgroundColor = '#4158D0';
         buttonSend.disabled=false;
+        inputMailLogin.style.borderColor = 'black';
+        inputMailLogin.style.borderWidth = '1px';
+        inputPasswordLogin.style.borderColor = 'black';
+        inputPasswordLogin.style.borderWidth = '1px';
     }
     if (!mailRegex.test(mail)) {
         console.log('mailRegex.test(mail) : ',inputMailLogin.value, mailRegex.test(mail));
