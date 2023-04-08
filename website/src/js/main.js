@@ -14,19 +14,19 @@ if (buttonSend !== null) {
 
 if (buttonBack !== null) {
     buttonBack.addEventListener('click', () => {
-        window.location.href = '../racine.html';
+        window.location.href = '../racine.php';
     });
 }
 
 if (buttonRedirectLogin !== null || buttonRedirectSignUp !== null) {
     buttonRedirectLogin.addEventListener('click', () => {
-    window.location.href = 'pages/connexion.html';
+    window.location.href = 'pages/connexion.php';
     });
 }
 
 if (buttonRedirectSignUp !== null || buttonRedirectLogin !== null) {
     buttonRedirectSignUp.addEventListener('click', () => {
-    window.location.href = 'pages/inscription.html';
+    window.location.href = 'pages/inscription.php';
     });
 }
 

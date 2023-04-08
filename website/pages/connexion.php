@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/css/style.css">
+    <script src="../src/js/main.js" defer></script>
+    <title>connexion</title>
+</head>
+    <body>
+        <div class="header">
+            <h1>Connexion</h1>
+            <button id="back" class="buttonBack">Retour à  l'accueil</button>
+        </div>
+        <div class="mainBlock">
+            <!-- connection fictive -->
+            <form action="connexion.php" method="POST">
+                <div class="title">Connectez vous !</div>
+
+                <div class="singleInput">
+                    <label for="mailLogin">Entrez votre email:</label>
+                    <input type="email" name="emailLogin" placeholder="exemple@mail.com" id="mailLogin">
+                </div>
+
+                <div class="singleInput">
+                    <label for="passwordLogin">Entrez votre mot de passe:</label>
+                    <input type="password" name="passwordInput" id="passwordLogin">
+                </div>
+
+                <button class="valider" id="send">Valider</button>
+            </form>
+        </div>
+        <footer>
+            <p>© <u>IUT de Rodez</u> 2023 - Tous droits réservés</p>
+        </footer>
+    </body>
+</html> 

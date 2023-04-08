@@ -1,38 +1,46 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscrit !</title>
+    <link rel="stylesheet" href="../src/css/style.css">
+    <script src="../src/js/main.js" defer></script>
+    <title>Inscription</title>
 </head>
-<body>
-    <?php
-        $mail = $_POST['emailInput'];
-        $mot_de_passe = $_POST['passwordInput'];
-        $nom = $_POST['nameInput'];
-        $prenom = $_POST['firstnameInput'];
+    <body>
+        <div class="header">
+            <h1>Inscription</h1>
+            <button id="back" class="buttonBack">Retour à l'accueil</button>
+        </div>
+        <div class="mainBlock">
+            <form method="POST" name="formSignUp" action="traitementInscription.php">
+                <div class="title">Inscrivez vous !</div>
 
-        try {
-            $bdd = new PDO('mysql:host=localhost;dbname=sae_reseau;', 'root', '');
+                    <div class="singleInput">
+                        <label for="mailSignUp">Entrez votre email:</label>
+                        <input type="email" name="emailInput" placeholder="exemple@mail.com" id="mailSignUp">
+                    </div>
 
-        } catch (PDOException $e) {
-            die('Erreur : ' . $e->getMessage());
-        }
+                    <div class="singleInput">
+                        <label for="firstnameSignUp">Entrez votre prénom :</label>
+                        <input type="text" name="firstnameInput" placeholder="John" id="firstnameSignUp">
+                    </div>
 
-        $insert_user = $bdd->prepare('INSERT INTO users(nom, prenom, adresse_mail, mdp) VALUES(?, ?, ?, ?)');
-        $insert_user->execute(array($nom, $prenom, $mail, $mot_de_passe));
+                    <div class="singleInput">
+                        <label for="nameSignUp">Entrez votre nom :</label>
+                        <input type="text" name="nameInput" placeholder="Doe" id="nameSignUp">
+                    </div>
 
-        $user_number_query = $bdd->prepare('SELECT COUNT(*) FROM users');
-        $user_number_query->execute();
-        $user_number = $user_number_query->fetch()['COUNT(*)'];
-        echo "Merci pour votre inscription, nous somme désormais " . $user_number . " inscrits sur le site !";
-
-        echo "<p>Voici la liste des membres :</p>";
-        $name_user_query = $bdd->query('SELECT nom, prenom, adresse_mail FROM users');
-        foreach ($name_user_query as list($nom, $prenom, $adresse_mail)) {
-            echo "$nom $prenom $adresse_mail</br>";
-        }
-    ?>
-</body>
+                    <div class="singleInput">
+                        <label for="passwordSignUp">Entrez votre mot de passe:</label>
+                        <input type="password" name="passwordInput" placeholder="Mot de passe" id="passwordSignUp">
+                    </div>
+                <button class="valider" id="send">Valider</button>
+            </form>
+        </div>
+        <footer>
+            <p>© <u>IUT de Rodez</u> 2023 - Tous droits réservés</p>
+        </footer>
+    </body>
 </html>
