@@ -8,14 +8,16 @@
     <script src="../src/js/main.js" defer></script>
     <title>inscription</title>
 </head>
-    <body>
+<body>
+    <div class="container">
         <div class="header">
             <h1>Inscription</h1>
             <button id="back" class="buttonBack">Retour à l'accueil</button>
         </div>
-        <div class="mainBlock">
-            <form method="POST" name="formSignUp" action="Inscription.php">
-                <div class="title">Inscrivez vous !</div>
+        <div class="content">
+            <div class="mainBlock">
+                <form method="POST" name="formSignUp" action="Inscription.php">
+                    <div class="title">Inscrivez vous !</div>
 
                     <div class="singleInput">
                         <label for="mailSignUp">Entrez votre email:</label>
@@ -36,11 +38,13 @@
                         <label for="passwordSignUp">Entrez votre mot de passe:</label>
                         <input type="password" name="passwordInput" placeholder="mot de passe" id="passwordSignUp">
                     </div>
-                <button class="valider" id="send">Valider</button>
-            </form>
+                    <button class="valider" id="send">Valider</button>
+                </form>
+            </div>
         </div>
         <footer>
             <p>© <u>IUT de Rodez</u> 2023 - Tous droits réservés</p>
         </footer>
-    </body>
+    </div>
+</body>
 </html>
