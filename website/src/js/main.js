@@ -4,7 +4,7 @@ const buttonBack = document.getElementById('back');
 const buttonSend = document.getElementById('send');
 const inputMailSignUp = document.getElementById('mailSignUp');
 const inputNameSignUp = document.getElementById('nameSignUp');
-const inputFistnameSignUp = document.getElementById('firstnameSignUp');
+const inputFirstnameSignUp = document.getElementById('firstnameSignUp');
 const inputPasswordSignUp = document.getElementById('passwordSignUp');
 
 
@@ -30,7 +30,7 @@ if (buttonRedirectSignUp !== null || buttonRedirectLogin !== null) {
     });
 }
 
-if (inputFistnameSignUp !== null) {
+if (inputFirstnameSignUp !== null) {
     inputPasswordSignUp.addEventListener('blur', validateFormSignUp);
 }
 
@@ -40,7 +40,7 @@ if (inputMailLogin !== null) {
 
 function validateFormSignUp() {
     const mail = inputMailSignUp.value,
-          firstName = inputFistnameSignUp.value,
+          firstName = inputFirstnameSignUp.value,
           name = inputNameSignUp.value,
           password = inputPasswordSignUp.value,
           mailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
@@ -50,12 +50,14 @@ function validateFormSignUp() {
         buttonSend.style.backgroundColor = '#4158D0';
         buttonSend.disabled=false;
     }
+    // TODO Faire une fonction pour indiquer que le champs comporte une erreur
     if (!mailRegex.test(mail)) {
         console.log('mailRegex.test(mail) : ',inputMailSignUp.value, mailRegex.test(mail));
         inputMailSignUp.style.borderColor = 'red';
         inputMailSignUp.style.borderWidth = '3px';
         buttonSend.style.backgroundColor = 'grey';
         buttonSend.disabled=true;
+        // TODO afficher un message d'erreur
     }
     if (!nameRegex.test(name)) {
         console.log('nameRegex.test(name) : ',inputNameSignUp.value, nameRegex.test(name));
@@ -63,13 +65,15 @@ function validateFormSignUp() {
         inputNameSignUp.style.borderWidth = '3px';
         buttonSend.style.backgroundColor = 'grey';
         buttonSend.disabled=true;
+        // TODO afficher un message d'erreur
     }
     if (!nameRegex.test(firstName)) {
-        console.log('nameRegex.test(name) : ',inputFistnameSignUp.value, nameRegex.test(name));
-        inputFistnameSignUp.style.borderColor = 'red';
-        inputFistnameSignUp.style.borderWidth = '3px';
+        console.log('nameRegex.test(name) : ',inputFirstnameSignUp.value, nameRegex.test(name));
+        inputFirstnameSignUp.style.borderColor = 'red';
+        inputFirstnameSignUp.style.borderWidth = '3px';
         buttonSend.style.backgroundColor = 'grey';
         buttonSend.disabled=true;
+        // TODO afficher un message d'erreur
     }
     if (password.length < 8) {
         console.log('password.length < 8 : ', password.length < 8);
@@ -77,6 +81,7 @@ function validateFormSignUp() {
         inputPasswordSignUp.style.borderWidth = '3px';
         buttonSend.style.backgroundColor = 'grey';
         buttonSend.disabled=true;
+        // TODO afficher un message d'erreur
     }
 }
 
