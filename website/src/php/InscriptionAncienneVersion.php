@@ -8,6 +8,7 @@
 </head>
 <body>
     <?php
+        session_start();
         $mail = $_POST['emailInput'];
         $mot_de_passe = $_POST['passwordInput'];
         $nom = $_POST['nameInput'];
@@ -23,10 +24,18 @@
         $insert_user = $bdd->prepare('INSERT INTO users(nom, prenom, adresse_mail, mdp) VALUES(?, ?, ?, ?)');
         $insert_user->execute(array($nom, $prenom, $mail, $mot_de_passe));
 
+        $_SESSION['bdd'] = $bdd;
+        echo $bdd[0] . $bdd[1];
+        // $_SESSION['nom'] = $nom;
+        // $_SESSION['prenom'] = $prenom;
+        // $_SESSION['mail'] = $mail;
+ 
         $user_number_query = $bdd->prepare('SELECT COUNT(*) FROM users');
         $user_number_query->execute();
         $user_number = $user_number_query->fetch()['COUNT(*)'];
-        echo "Merci pour votre inscription, nous somme désormais " . $user_number . " inscrits sur le site !";
+        echo "Merci " . $nom . " " . $prenom
+             . " pour votre inscription, nous somme désormais "
+             . $user_number . " inscrits sur le site !";
 
         echo "<p>Voici la liste des membres :</p>";
         $name_user_query = $bdd->query('SELECT nom, prenom, adresse_mail FROM users');
