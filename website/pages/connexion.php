@@ -9,7 +9,7 @@
     <title>connexion</title>
 </head>
     <body>
-        <div class="header">
+        <div class="enTete">
             <h1>Connexion</h1>
             <button id="back" class="buttonBack">Retour à  l'accueil</button>
         </div>

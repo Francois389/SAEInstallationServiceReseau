@@ -9,9 +9,9 @@
     <title>Page d'accueil</title>
 </head>
 <body>
-    <div class="container">
+    <div class="conteneur">
         <?php include_once ("includes/header.html")?>
-        <div class="content">
+        <div class="contenu">
             <div class="mainBlock" id="blockAccueil">
                 <button id="buttonRedirectSignUp">Inscription</button>
                 <button id="buttonRedirectLogin">Connexion</button>

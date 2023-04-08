@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../src/css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <link href="../src/css/style.css" rel="stylesheet">
     <script src="../src/js/main.js" defer></script>
     <title>Inscrit !</title>
 </head>
@@ -18,17 +18,17 @@
             die('Erreur : ' . $e->getMessage());
         }
     ?>
-    <div class="container">
-    <div class="header">
+    <div class="enTete">
         <h1>Dashboard</h1>
         <button id="back" class="buttonBack">Retour &agrave;  l'accueil</button>
     </div>
+    <div class="conteneur">
         <?php
         $user_number_query = $bdd->prepare('SELECT COUNT(*) FROM users');
         $user_number_query->execute();
         $user_number = $user_number_query->fetch()['COUNT(*)'];
         ?>
-        <div class="content">
+        <div class="contenu">
             <div class="mainBlock">
                 <p>Merci pour votre inscription, nous somme désormais <?php echo $user_number?> inscrits sur le site !</p>
             </div>
