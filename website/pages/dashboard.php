@@ -1,4 +1,4 @@
-<?php /* Séparation de l'inscription et de la visualisation des users. */?>
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
     <link href="../src/css/style.css" rel="stylesheet">
     <script src="../src/js/main.js" defer></script>
-    <title>Inscrit !</title>
+    <title>Dashboard</title>
 </head>
 <body>
     <?php
@@ -30,7 +30,7 @@
         ?>
         <div class="contenu">
             <div class="mainBlock">
-                <p>Merci pour votre inscription, nous somme désormais <?php echo $user_number?> inscrits sur le site !</p>
+                <p>Il y a <?php echo $user_number?> inscrits sur le site !</p>
             </div>
             <div class="mainBlock">
                 <?php $name_user_query = $bdd->query('SELECT nom, prenom, adresse_mail FROM users'); ?>

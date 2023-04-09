@@ -1,3 +1,4 @@
+<?php session_start()?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,13 +15,18 @@
             <button id="back" class="buttonBack">Retour à  l'accueil</button>
         </div>
         <div class="mainBlock">
-            <!-- connection fictive -->
-            <form action="connexion.php" method="POST">
+            <?php
+            if (isset($_SESSION['connexionErreur']) && $_SESSION['connexionErreur']) { ?>
+                <div class="alert alert-danger" role="alert">
+                    Mauvais identifiant ou mot de passe
+                </div>
+            <?php } ?>
+            <form action="traitementConnexion.php" method="POST">
                 <div class="title">Connectez vous !</div>
 
                 <div class="singleInput">
-                    <label for="mailLogin">Entrez votre email:</label>
-                    <input type="email" name="emailLogin" placeholder="exemple@mail.com" id="mailLogin">
+                    <label for="emailLogin">Entrez votre email:</label>
+                    <input type="email" name="emailLogin" placeholder="exemple@mail.com" id="emailLogin">
                 </div>
 
                 <div class="singleInput">
