@@ -1,3 +1,7 @@
+<?php session_start();
+$_SESSION['connexionErreur'] = false;
+$_SESSION['login'] = "";
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

@@ -110,7 +110,7 @@ function afficheErreurChamps(elt, messageErreur="") {
 function validateFormLogin() {
     const email = inputMailLogin.value;
     const password = inputPasswordLogin.value;
-    if (mailRegex.test(email) && password.length >= 8) {
+    if (mailRegex.test(email) && password.length >= 1) {
         inputMailLogin.classList.remove('champsErreur');
         inputPasswordLogin.classList.remove('champsErreur');
         buttonSend.style.backgroundColor = '#4158D0';
@@ -119,7 +119,7 @@ function validateFormLogin() {
         if (!mailRegex.test(email)) {
             afficheErreurChamps(inputMailLogin);
         }
-        if (password.length < 8) {
+        if (password.length < 1) {
             afficheErreurChamps(inputPasswordLogin);
         }
     }
