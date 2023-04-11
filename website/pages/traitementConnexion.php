@@ -13,7 +13,7 @@ $email_users = $bdd ->query('SELECT adresse_mail, mdp FROM users');
 foreach ($email_users as list($email_existant, $mdp_existant)) {
     if ($email_existant == $email) {
         $_SESSION['login'] = $email;
-        if ($mdp_existant == $mdp_saisie) {
+        if (password_verify($mdp_saisie, $mdp_existant)) {
             header('Location: dashboard.php');
             return;
         } else {

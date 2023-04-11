@@ -1,5 +1,6 @@
 const mailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 const nameRegex = /^[a-zA-Z]+$/;
+const MDP_MAX_LENGTH = 1;
 
 const buttonBack = document.getElementById('back');
 const buttonSend = document.getElementById('send');
@@ -43,10 +44,7 @@ if (buttonRedirectSignUp !== null || buttonRedirectLogin !== null) {
 if (inputFirstnameSignUp !== null) {
     inputPasswordSignUp.addEventListener('blur', validateFormSignUp);
 }
-
-if (inputMailLogin !== null) {
-    inputMailLogin.addEventListener('blur', validateFormLogin);
-}
+    
 
 function validateFormSignUp() {
     const mail = inputMailSignUp.value,
@@ -54,7 +52,7 @@ function validateFormSignUp() {
           name = inputNameSignUp.value,
           password = inputPasswordSignUp.value;
 
-    if (mailRegex.test(mail) && nameRegex.test(name) && nameRegex.test(firstName) && password.length >= 8) {
+    if (mailRegex.test(mail) && nameRegex.test(name) && nameRegex.test(firstName) && password.length >= MDP_MAX_LENGTH) {
         buttonSend.style.backgroundColor = '#4158D0';
         buttonSend.disabled=false;
     }
@@ -78,10 +76,10 @@ function validateFormSignUp() {
         inputFirstnameSignUp.classList.add('champsErreur');
         buttonSend.style.backgroundColor = 'grey';
         buttonSend.disabled=true;
-                // TODO afficher un message d'erreur
+        // TODO afficher un message d'erreur
     }
-    if (password.length < 8) {
-        console.log('password.length < 8 : ', password.length < 8);
+    if (password.length < 1) {
+        console.log('password.length < 8 : ', password.length < MDP_MAX_LENGTH);
         inputPasswordSignUp.classList.add('champsErreur');
         buttonSend.style.backgroundColor = 'grey';
         buttonSend.disabled=true;
@@ -90,8 +88,8 @@ function validateFormSignUp() {
 }
 
 if (inputMailLogin != null && inputPasswordLogin != null) {
-    inputMailLogin.addEventListener('blur',validateFormLogin);
-    inputPasswordLogin.addEventListener('blur',validateFormLogin)
+    inputMailLogin.addEventListener('blur',validateMailLogin);
+    inputPasswordLogin.addEventListener('blur',validateMdpLogin)
 }
 
 /**
@@ -107,18 +105,27 @@ function afficheErreurChamps(elt, messageErreur="") {
     //TODO Ajouter le message d'erreur à l'élément
 }
 
-function validateFormLogin() {
+function validateMailLogin() {
     const email = inputMailLogin.value;
-    const password = inputPasswordLogin.value;
-    if (mailRegex.test(email) && password.length >= 1) {
+    if (mailRegex.test(email) ) {
         inputMailLogin.classList.remove('champsErreur');
-        inputPasswordLogin.classList.remove('champsErreur');
         buttonSend.style.backgroundColor = '#4158D0';
-        buttonSend.disabled=false;
+        buttonSend.disabled = false;
     } else {
         if (!mailRegex.test(email)) {
             afficheErreurChamps(inputMailLogin);
         }
+    }
+}
+
+function validateMdpLogin() {
+    console.log('validateMdpFormLogin')
+    const password = inputPasswordLogin.value;
+    if (password.length >= MDP_MAX_LENGTH) {
+        inputPasswordLogin.classList.remove('champsErreur');
+        buttonSend.style.backgroundColor = '#4158D0';
+        buttonSend.disabled = false;
+    } else {
         if (password.length < 1) {
             afficheErreurChamps(inputPasswordLogin);
         }

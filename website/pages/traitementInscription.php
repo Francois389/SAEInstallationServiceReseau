@@ -21,7 +21,7 @@
         }
 
         $insert_user = $bdd->prepare('INSERT INTO users(nom, prenom, adresse_mail, mdp) VALUES(?, ?, ?, ?)');
-        $insert_user->execute(array($nom, $prenom, $mail, $mot_de_passe));
+        $insert_user->execute(array($nom, $prenom, $mail, password_hash($mot_de_passe, PASSWORD_BCRYPT)));
 
         header('Location: dashboard.php');
     ?>
