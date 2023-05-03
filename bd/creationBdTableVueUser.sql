@@ -4,30 +4,30 @@ CREATE DATABASE SaeReseau;
 
 CREATE TABLE employe (
     id INT NOT NULL AUTO_INCREMENT,
-    nom VARCHAR(50) /*NOT NULL ?*/,
-    prenom VARCHAR(50) /*NOT NULL ?*/,
-    date_de_naissance DATE /*NOT NULL ?*/,
-    mot_de_passe TEXT /*NOT NULL ? j'ai mis le type TEXT au cas si on décide de hacher le mdp*/,
-    statut INT /*NOT NULL ?*/,
+    nom VARCHAR(50) NOT NULL ,
+    prenom VARCHAR(50) NOT NULL ,
+    date_de_naissance DATE NOT NULL,
+    mot_de_passe TEXT NOT NULL /*? j'ai mis le type TEXT au cas si on décide de hacher le mdp*/,
+    statut INT NOT NULL,
     PRIMARY KEY (id)
 );
 
 CREATE VIEW tout_le_monde AS (
     SELECT *
     FROM employe
-); /*vue pour le PDG, faut il donné au PDG le droit de voir le mdp? */
+); /*vue pour le PDG, faut il donné au PDG le droit de voir le mdp? */ /*Non*/
 
 CREATE VIEW manager_et_employe AS (
     SELECT *
     FROM employe
     WHERE statut >= 2
-); /*vue pour le/les manager, faut il donné au manager le droit de voir le mdp? */
+); /*vue pour le/les manager, faut il donné au manager le droit de voir le mdp? *//*Non*/
 
 CREATE VIEW employes AS (
     SELECT *
     FROM employe
     WHERE statut >= 3
-); /*a réfléchir a se qu'on donne l'autorisation de voir au employés */
+); /*a réfléchir a se qu'on donne l'autorisation de voir au employés *//*Seulement lui même*/
 
 CREATE VIEW connexion AS (
     SELECT *
