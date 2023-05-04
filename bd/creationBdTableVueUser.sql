@@ -1,7 +1,7 @@
 CREATE DATABASE SOS_ordi;
 
 CREATE TABLE personnel (
-    adresse_mail INT NOT NULL,
+    adresse_mail VARCHAR(70) NOT NULL,
     nom VARCHAR(50) NOT NULL ,
     prenom VARCHAR(50) NOT NULL ,
     date_de_naissance DATE NOT NULL,
@@ -11,24 +11,24 @@ CREATE TABLE personnel (
 );
 
 CREATE VIEW vue_pdg AS (
-    SELECT adresse_mail, nom, prenom, date_de_naissance
+    SELECT adresse_mail, nom, prenom, date_de_naissance, statut
     FROM personnel
 );
 
 CREATE VIEW vue_managers AS (
-    SELECT adresse_mail, nom, prenom, date_de_naissance
+    SELECT adresse_mail, nom, prenom, date_de_naissance, statut
     FROM personnel
     WHERE statut >= 2
 );
 
 CREATE VIEW vue_employes AS (
-    SELECT adresse_mail, nom, prenom, date_de_naissance
+    SELECT adresse_mail, nom, prenom, date_de_naissance, statut
     FROM personnel
     WHERE statut >= 3
 );
 
 CREATE VIEW vue_connexion AS (
-    SELECT adresse_mail, mot_de_passe
+    SELECT adresse_mail, mot_de_passe, statut
     FROM personnel
 );
 
