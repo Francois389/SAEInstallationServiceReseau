@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style.css">
+
     <title>Lecture</title>
 </head>
 <body>
@@ -61,7 +63,7 @@ if ($vue == 'vue_pdg' || $vue == 'vue_managers') {
     $infos_employes_query = $bdd->query('SELECT adresse_mail, nom, prenom, statut FROM ' . $vue . ' WHERE statut > ' . $statut . ' ORDER BY statut');
     ?>
     <p>Voici la liste des membres :</p>
-    <table class="table">
+    <table>
         <tr>
             <th class="col">Adresse mail</th>
             <th class="col">Nom</th>
