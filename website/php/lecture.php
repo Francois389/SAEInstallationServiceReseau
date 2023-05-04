@@ -9,66 +9,79 @@
 <body>
 <?php
     session_start();
-    // $bdd = null;
-
     function connexionBd($identifiantUser, $mdp) { //connection a la Bd en fonction du statut de l'utilisateur
         try {
-            $bdd = new PDO('mysql:host=localhost;dbname=saereseau;', $identifiantUser, $mdp);
+            $bdd = new PDO('mysql:host=localhost;dbname=sos_ordi;', $identifiantUser, $mdp);
             return $bdd;
         } catch (PDOException $e) {
             die('Erreur : ' . $e->getMessage());
         }
     }
 
-    switch ($_SESSION['statutConnection']) {
+    switch ($_SESSION['statutConnexion']) {
         case '1':
-            $bdd = connexionBd('PDG', '2f)1aQUTlqscubl');
-            $vue = 'tout_le_monde';
+            $bdd = connexionBd('pdg', '2f)1aQUTlqscubl');
+            $vue = 'vue_pdg';
+            $statut = '1';
             break;
 
         case '2':
-            $bdd = connexionBd('Manager', '&el3IXwkcstnpi');
-            $vue = 'manager_et_employe';
+            $bdd = connexionBd('manager', '&el3IXwkcstnpi');
+            $vue = 'vue_managers';
+            $statut = '2';
             break;
 
         case '3':
-            $bdd = connexionBd('Employe', 'AU$)I#s5zzv8814');
-            $vue = 'employes';
+            $bdd = connexionBd('employe', 'AU$)I#s5zzv8814');
+            $vue = 'vue_employes';
             break;
 
         default:
             break;
     }
 
-    $employe_number_query = $bdd->prepare('SELECT COUNT(*) FROM ' . $vue);
-    $employe_number_query->execute();
-    $employe_number = $employe_number_query->fetch()['COUNT(*)'];
+    $id = $_SESSION['idConnexion'];
+    $infos_perso_query = $bdd->prepare('SELECT nom, prenom, date_de_naissance, statut FROM ' . $vue . ' WHERE adresse_mail = ?');
+    $infos_perso_query->execute(array($id));
+    $infos_perso = $infos_perso_query->fetch();
 ?>
 <div class="contenu">
     <div class="mainBlock">
-        <p>Il y a <?php echo $employe_number?> employés dans l'entreprise !</p>
+        <p>
+            Voici vos informations personnels :</br>
+            Nom: <?php echo $infos_perso['nom']; ?></br>
+            Prénom: <?php echo $infos_perso['prenom']; ?></br>
+            Date de naissance: <?php echo $infos_perso['date_de_naissance']; ?></br>
+            Statut : <?php echo $infos_perso['statut']; ?></br>
+        </p>
 </div>
 <div class="mainBlock">
-    <?php
-        $infos_employes_query = $bdd->query('SELECT nom, prenom, date_de_naissance, statut FROM ' . $vue);
+<?php
+if ($vue == 'vue_pdg' || $vue == 'vue_managers') {
+    $infos_employes_query = $bdd->query('SELECT adresse_mail, nom, prenom, statut FROM ' . $vue . ' WHERE statut > ' . $statut . ' ORDER BY statut');
     ?>
     <p>Voici la liste des membres :</p>
     <table class="table">
-    <tr>
-        <th class="col">Nom</th>
-        <th class="col">Prenom</th>
-        <th class="col">Date de naissance</th>
-        <th class="col">Statut</th>
-    </tr>
-<?php
-    foreach ($infos_employes_query as list($nom, $prenom, $date_de_naissance, $statut)) {
-        echo " <tr>
+        <tr>
+            <th class="col">Adresse mail</th>
+            <th class="col">Nom</th>
+            <th class="col">Prenom</th>
+            <th class="col">Statut</th>
+        </tr>
+        <?php
+        foreach ($infos_employes_query as list($adresse_mail, $nom, $prenom, $statut)) {
+            echo " <tr>
+                    <td>$adresse_mail</td>
                     <td>$nom</td>
                     <td>$prenom</td>
-                    <td>$date_de_naissance</td>
                     <td>$statut</td>
                 </tr>";
-    } 
+        }
+        ?>
+    </table>
+<?php
+} 
 ?>
+
 </body>
 </html>

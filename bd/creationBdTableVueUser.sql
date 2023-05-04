@@ -1,45 +1,43 @@
-/* ////////////     ATTENTION !!! REFLECHIR AU QUESTIONS DANS LES COMMENTAIRES AVANT DE COPIER COLLER LE CODE      ////////////// */
+CREATE DATABASE SOS_ordi;
 
-CREATE DATABASE SaeReseau;
-
-CREATE TABLE employe (
-    id INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE personnel (
+    adresse_mail INT NOT NULL,
     nom VARCHAR(50) NOT NULL ,
     prenom VARCHAR(50) NOT NULL ,
     date_de_naissance DATE NOT NULL,
     mot_de_passe TEXT NOT NULL /*? j'ai mis le type TEXT au cas si on décide de hacher le mdp*/,
     statut INT NOT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (adresse_mail)
 );
 
-CREATE VIEW tout_le_monde AS (
-    SELECT *
-    FROM employe
-); /*vue pour le PDG, faut il donné au PDG le droit de voir le mdp? */ /*Non*/
+CREATE VIEW vue_pdg AS (
+    SELECT adresse_mail, nom, prenom, date_de_naissance
+    FROM personnel
+);
 
-CREATE VIEW manager_et_employe AS (
-    SELECT *
-    FROM employe
+CREATE VIEW vue_managers AS (
+    SELECT adresse_mail, nom, prenom, date_de_naissance
+    FROM personnel
     WHERE statut >= 2
-); /*vue pour le/les manager, faut il donné au manager le droit de voir le mdp? *//*Non*/
-
-CREATE VIEW employes AS (
-    SELECT *
-    FROM employe
-    WHERE statut >= 3
-); /*a réfléchir a se qu'on donne l'autorisation de voir au employés *//*Seulement lui même*/
-
-CREATE VIEW connexion AS (
-    SELECT *
-    FROM employe
 );
 
-CREATE USER 'PDG' IDENTIFIED BY '2f)1aQUTlqscubl';
-CREATE USER 'Manager' IDENTIFIED BY '&el3IXwkcstnpi';
-CREATE USER 'Employe' IDENTIFIED BY 'AU$)I#s5zzv8814';
-CREATE USER 'Connexion' IDENTIFIED BY 'B42Pz#EitFhyL';
+CREATE VIEW vue_employes AS (
+    SELECT adresse_mail, nom, prenom, date_de_naissance
+    FROM personnel
+    WHERE statut >= 3
+);
 
-GRANT SELECT ON tout_le_monde TO 'PDG';
-GRANT SELECT ON manager_et_employe TO 'Manager';
-GRANT SELECT ON employes TO 'Employe';
-GRANT SELECT ON connexion TO 'Connexion';
+CREATE VIEW vue_connexion AS (
+    SELECT adresse_mail, mot_de_passe
+    FROM personnel
+);
+
+CREATE USER 'pdg'@'localhost' IDENTIFIED BY '2f)1aQUTlqscubl';
+CREATE USER 'manager'@'localhost' IDENTIFIED BY '&el3IXwkcstnpi';
+CREATE USER 'employe'@'localhost' IDENTIFIED BY 'AU$)I#s5zzv8814';
+CREATE USER 'connexion'@'localhost' IDENTIFIED BY 'B42Pz#EitFhyL';
+
+GRANT SELECT ON sos_ordi.vue_pdg TO 'pdg'@'localhost';
+GRANT SELECT ON sos_ordi.vue_managers TO 'manager'@'localhost';
+GRANT SELECT ON sos_ordi.vue_employes TO 'employe'@'localhost';
+GRANT SELECT ON sos_ordi.vue_connexion TO 'connexion'@'localhost';
