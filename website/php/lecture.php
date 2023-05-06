@@ -9,6 +9,10 @@
     <title>Lecture</title>
 </head>
 <body>
+    <nav class="enTeteAccueil">
+        <h1 class="title">Dashboard</h1>
+        <button id="back" class="buttonBack">Retour à  l'accueil</button>
+    </nav>
 <?php
     session_start();
     function connexionBd($identifiantUser, $mdp) { //connection a la Bd en fonction du statut de l'utilisateur
@@ -84,6 +88,10 @@ if ($vue == 'vue_pdg' || $vue == 'vue_managers') {
 <?php
 } 
 ?>
+</div>
+<footer>
+        <p>© 2023 - Tous droits réservés</p>
+</footer>
 
 </body>
 </html>
