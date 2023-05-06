@@ -4,7 +4,7 @@ CREATE TABLE personnel (
     adresse_mail VARCHAR(70) NOT NULL,
     nom VARCHAR(50) NOT NULL ,
     prenom VARCHAR(50) NOT NULL ,
-    date_de_naissance DATE NOT NULL,
+    date_de_naissance DATE,
     mot_de_passe TEXT NOT NULL /*? j'ai mis le type TEXT au cas si on décide de hacher le mdp*/,
     statut INT NOT NULL,
     PRIMARY KEY (adresse_mail)
