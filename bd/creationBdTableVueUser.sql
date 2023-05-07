@@ -32,10 +32,10 @@ CREATE VIEW vue_connexion AS (
     FROM personnel
 );
 
-CREATE USER 'pdg'@'localhost' IDENTIFIED BY '2f)1aQUTlqscubl';
-CREATE USER 'manager'@'localhost' IDENTIFIED BY '&el3IXwkcstnpi';
-CREATE USER 'employe'@'localhost' IDENTIFIED BY 'AU$)I#s5zzv8814';
-CREATE USER 'connexion'@'localhost' IDENTIFIED BY 'B42Pz#EitFhyL';
+CREATE USER 'pdg'@'%' IDENTIFIED BY '2f)1aQUTlqscubl';
+CREATE USER 'manager'@'%' IDENTIFIED BY '&el3IXwkcstnpi';
+CREATE USER 'employe'@'%' IDENTIFIED BY 'AU$)I#s5zzv8814';
+CREATE USER 'connexion'@'%' IDENTIFIED BY 'B42Pz#EitFhyL';
 
 GRANT SELECT ON sos_ordi.vue_pdg TO 'pdg'@'localhost';
 GRANT SELECT ON sos_ordi.vue_managers TO 'manager'@'localhost';
