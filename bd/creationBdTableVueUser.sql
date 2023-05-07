@@ -1,4 +1,4 @@
-CREATE DATABASE SOS_ordi;
+CREATE DATABASE sos_ordi;
 
 CREATE TABLE personnel (
     adresse_mail VARCHAR(70) NOT NULL,
