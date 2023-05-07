@@ -37,7 +37,7 @@ CREATE USER 'manager'@'%' IDENTIFIED BY '&el3IXwkcstnpi';
 CREATE USER 'employe'@'%' IDENTIFIED BY 'AU$)I#s5zzv8814';
 CREATE USER 'connexion'@'%' IDENTIFIED BY 'B42Pz#EitFhyL';
 
-GRANT SELECT ON sos_ordi.vue_pdg TO 'pdg'@'localhost';
-GRANT SELECT ON sos_ordi.vue_managers TO 'manager'@'localhost';
-GRANT SELECT ON sos_ordi.vue_employes TO 'employe'@'localhost';
-GRANT SELECT ON sos_ordi.vue_connexion TO 'connexion'@'localhost';
+GRANT SELECT ON sos_ordi.vue_pdg TO 'pdg'@'%';
+GRANT SELECT ON sos_ordi.vue_managers TO 'manager'@'%';
+GRANT SELECT ON sos_ordi.vue_employes TO 'employe'@'%';
+GRANT SELECT ON sos_ordi.vue_connexion TO 'connexion'@'%';
