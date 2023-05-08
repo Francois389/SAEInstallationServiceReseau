@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
-
+    <script src="../scripts/main.js" defer></script>
     <title>Lecture</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
     session_start();
     function connexionBd($identifiantUser, $mdp) { //connection a la Bd en fonction du statut de l'utilisateur
         try {
-            $bdd = new PDO('mysql:host=localhost;dbname=sos_ordi;', $identifiantUser, $mdp);
+            $bdd = new PDO('mysql:host=192.168.1.31:3308;dbname=sos_ordi;', $identifiantUser, $mdp);
             return $bdd;
         } catch (PDOException $e) {
             die('Erreur : ' . $e->getMessage());

@@ -4,11 +4,9 @@
     $mdp = $_POST['passwordInput'];
 
     try {
-        $bdd = new PDO('mysql:host=localhost;dbname=sos_ordi;', 'connexion', 'B42Pz#EitFhyL');
-
+        $bdd = new PDO('mysql:host=192.168.1.31:3308;dbname=sos_ordi;', 'connexion', 'B42Pz#EitFhyL');
     } catch (PDOException $e) {
         die('Erreur : ' . $e->getMessage());
-
     }
 
     $verify_connection_query = $bdd->prepare('SELECT mot_de_passe FROM vue_connexion WHERE adresse_mail = ?');
