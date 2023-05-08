@@ -66,7 +66,7 @@ if (inputEmail != null && inputPassword != null) {
 
     function saisieEmailValide() {
         console.log("Changement de saisie email");
-        if (inputEmail.value.match("[a-z0-9._-]+@sos_ordi\.[a-z]{2,4}$")) {
+        if (inputEmail.value.match("[a-z0-9._-]+@sos-ordi\.[a-z]{2,4}$")) {
             inputEmail.style.borderColor = "green";
             inputEmail.style.borderWidth = "5px";
             emailValide = true;
