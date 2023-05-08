@@ -61,12 +61,12 @@
             Statut : <?php echo $infos_perso['statut']; ?><br>
         </p>
 </div>
-<div class="mainBlock">
 <?php
-if ($vue == 'vue_pdg' || $vue == 'vue_managers') {
+if ($vue == 'vue_pdg' || $vue == 'vue_managers') { ?>
+<div class="mainBlock"><?php
     $infos_employes_query = $bdd->query('SELECT adresse_mail, nom, prenom, statut FROM ' . $vue . ' WHERE statut > ' . $statut . ' ORDER BY statut');
     ?>
-    <p>Voici la liste des membres :</p>
+    <p>Voici la liste des employe :</p>
     <table>
         <tr>
             <th class="col">Adresse mail</th>
@@ -85,10 +85,10 @@ if ($vue == 'vue_pdg' || $vue == 'vue_managers') {
         }
         ?>
     </table>
-<?php
-} 
-?>
 </div>
+<?php
+}
+?>
 <footer>
         <p>&copy; 2023 - Tous droits r&eacute;serv&eacute;s</p>
 </footer>
