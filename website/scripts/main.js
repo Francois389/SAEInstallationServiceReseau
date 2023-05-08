@@ -64,11 +64,7 @@ if (inputEmail != null && inputPassword != null) {
     inputEmail.addEventListener("keyup", saisieEmailValide);
     inputPassword.addEventListener("keyup", saisiePwdValide);
 
-    /**
-     *
-     * @param {String} email
-     */
-    function saisieEmailValide(email) {
+    function saisieEmailValide() {
         console.log("Changement de saisie email");
         if (inputEmail.value.match("[a-z0-9._-]+@sos_ordi\.[a-z]{2,4}$")) {
             inputEmail.style.borderColor = "green";
@@ -83,7 +79,7 @@ if (inputEmail != null && inputPassword != null) {
         }
     }
 
-    function saisiePwdValide(value) {
+    function saisiePwdValide() {
         console.log("Changement de saisie password");
         if (inputPassword.value.length >= 1) {
             inputPassword.style.borderColor = "green";

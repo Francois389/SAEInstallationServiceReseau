@@ -25,8 +25,8 @@
         exit;
 
     } else {
-        // echo "Votre identifiant ou votre mot de passe est incorecte.";
-        // sleep(5);
+        echo "Votre identifiant ou votre mot de passe est incorrect.";
+        sleep(5);
         header('Location: ../../pages/connexion.html');
         exit;
     }

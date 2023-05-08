@@ -11,7 +11,7 @@
 <body>
     <nav class="enTeteAccueil">
         <h1 class="title">Dashboard</h1>
-        <button id="back" class="buttonBack">Retour à  l'accueil</button>
+        <button id="back" class="buttonBack">Retour &agrave;  l'accueil</button>
     </nav>
 <?php
     session_start();
@@ -54,11 +54,11 @@
 <div class="contenu">
     <div class="mainBlock">
         <p>
-            Voici vos informations personnels :</br>
-            Nom: <?php echo $infos_perso['nom']; ?></br>
-            Prénom: <?php echo $infos_perso['prenom']; ?></br>
-            Date de naissance: <?php echo $infos_perso['date_de_naissance']; ?></br>
-            Statut : <?php echo $infos_perso['statut']; ?></br>
+            Voici vos informations personnelles :<br>
+            Nom: <?php echo $infos_perso['nom']; ?><br>
+            Pr&eacute;nom: <?php echo $infos_perso['prenom']; ?><br>
+            Date de naissance: <?php echo $infos_perso['date_de_naissance']; ?><br>
+            Statut : <?php echo $infos_perso['statut']; ?><br>
         </p>
 </div>
 <div class="mainBlock">
@@ -71,7 +71,7 @@ if ($vue == 'vue_pdg' || $vue == 'vue_managers') {
         <tr>
             <th class="col">Adresse mail</th>
             <th class="col">Nom</th>
-            <th class="col">Prenom</th>
+            <th class="col">Pr&eacute;nom</th>
             <th class="col">Statut</th>
         </tr>
         <?php
@@ -90,7 +90,7 @@ if ($vue == 'vue_pdg' || $vue == 'vue_managers') {
 ?>
 </div>
 <footer>
-        <p>© 2023 - Tous droits réservés</p>
+        <p>&copy; 2023 - Tous droits r&eacute;serv&eacute;s</p>
 </footer>
 
 </body>
